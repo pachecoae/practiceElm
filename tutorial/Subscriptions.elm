@@ -15,7 +15,6 @@ init =
 
 -- MESSAGES
 
-
 type Msg
     = MouseMsg Mouse.Position
     | KeyMsg Keyboard.KeyCode
@@ -53,8 +52,6 @@ main : Program Never Model Msg
 main =
   program
     { init = init
-    , view = view
-    , update = update
+    , view = view, update = update
     , subscriptions = subscriptions
     }
-
