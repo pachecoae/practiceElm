@@ -1,3 +1,30 @@
+var _user$project$Players_Edit$listBtn = A2(
+	_elm_lang$html$Html$a,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$class('btn regular'),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$playersPath),
+			_1: {ctor: '[]'}
+		}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$i,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('fa fa-chevron-left mr1'),
+				_1: {ctor: '[]'}
+			},
+			{ctor: '[]'}),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html$text('List'),
+			_1: {ctor: '[]'}
+		}
+	});
 var _user$project$Players_Edit$btnLevelIncrease = function (player) {
 	return A2(
 		_elm_lang$html$Html$a,
@@ -133,7 +160,11 @@ var _user$project$Players_Edit$nav = function (model) {
 			_0: _elm_lang$html$Html_Attributes$class('clearfix mb2 white bg-black p1'),
 			_1: {ctor: '[]'}
 		},
-		{ctor: '[]'});
+		{
+			ctor: '::',
+			_0: _user$project$Players_Edit$listBtn,
+			_1: {ctor: '[]'}
+		});
 };
 var _user$project$Players_Edit$view = function (model) {
 	return A2(

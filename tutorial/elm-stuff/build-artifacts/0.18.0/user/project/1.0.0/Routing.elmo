@@ -1,3 +1,7 @@
+var _user$project$Routing$playerPath = function (id) {
+	return A2(_elm_lang$core$Basics_ops['++'], '#players/', id);
+};
+var _user$project$Routing$playersPath = '#players';
 var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 	{
 		ctor: '::',
