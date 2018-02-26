@@ -1,12 +1,12 @@
 module Msgs exposing (..)
 
 import Http
-import Models exposing (Player)
+import Models exposing (Respondent)
 import Navigation exposing (Location)
 import RemoteData exposing (WebData)
 
 type Msg
-  = OnFetchPlayers (WebData (List Player))
+  = OnFetchRespondents (WebData (List Respondent))
   | OnLocationChange Location
-  | ChangeLevel Player Int
-  | OnPlayerSave (Result Http.Error Player)
+  | ChangeLevel Respondent Int
+  | OnRespondentSave (Result Http.Error Respondent)

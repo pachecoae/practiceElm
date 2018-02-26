@@ -1,5 +1,5 @@
-var _user$project$Msgs$OnPlayerSave = function (a) {
-	return {ctor: 'OnPlayerSave', _0: a};
+var _user$project$Msgs$OnRespondentSave = function (a) {
+	return {ctor: 'OnRespondentSave', _0: a};
 };
 var _user$project$Msgs$ChangeLevel = F2(
 	function (a, b) {
@@ -8,6 +8,6 @@ var _user$project$Msgs$ChangeLevel = F2(
 var _user$project$Msgs$OnLocationChange = function (a) {
 	return {ctor: 'OnLocationChange', _0: a};
 };
-var _user$project$Msgs$OnFetchPlayers = function (a) {
-	return {ctor: 'OnFetchPlayers', _0: a};
+var _user$project$Msgs$OnFetchRespondents = function (a) {
+	return {ctor: 'OnFetchRespondents', _0: a};
 };

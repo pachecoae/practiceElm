@@ -1,10 +1,10 @@
 module View exposing (..)
 
 import Html exposing (Html, div, text)
-import Models exposing (Model, PlayerId)
+import Models exposing (Model, RespondentId)
 import Msgs exposing (Msg)
-import Players.Edit
-import Players.List
+import Respondents.Edit
+import Respondents.List
 import RemoteData
 
 view : Model -> Html Msg
@@ -15,34 +15,34 @@ view model =
 page : Model -> Html Msg
 page model =
   case model.route of
-    Models.PlayersRoute ->
-      Players.List.view model.players
+    Models.RespondentsRoute ->
+      Respondents.List.view model.respondents
 
-    Models.PlayerRoute id ->
-      playerEditPage model id
+    Models.RespondentRoute id ->
+      respondentEditPage model id
 
     Models.NotFoundRoute ->
       notFoundView
 
-playerEditPage : Model -> PlayerId -> Html Msg
-playerEditPage model playerId =
-  case model.players of
+respondentEditPage : Model -> RespondentId -> Html Msg
+respondentEditPage model respondentId =
+  case model.respondents of
     RemoteData.NotAsked ->
       text ""
 
     RemoteData.Loading ->
       text "Loading ..."
 
-    RemoteData.Success players ->
+    RemoteData.Success respondents ->
       let
-          maybePlayer =
-            players
-             |> List.filter (\player -> player.id == playerId)
+          maybeRespondent =
+            respondents
+             |> List.filter (\respondent -> respondent.id == respondentId)
              |> List.head
       in
-        case maybePlayer of
-          Just player ->
-            Players.Edit.view player
+        case maybeRespondent of
+          Just respondent ->
+            Respondents.Edit.view respondent
 
           Nothing ->
             notFoundView

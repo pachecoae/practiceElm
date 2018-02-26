@@ -5,58 +5,58 @@ import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode
 import Msgs exposing (Msg)
-import Models exposing (PlayerId, Player)
+import Models exposing (RespondentId, Respondent)
 import RemoteData
 
-fetchPlayers : Cmd Msg
-fetchPlayers =
-  Http.get fetchPlayersUrl playersDecoder
+fetchRespondents : Cmd Msg
+fetchRespondents =
+  Http.get fetchRespondentsUrl respondentsDecoder
     |> RemoteData.sendRequest
-    |> Cmd.map Msgs.OnFetchPlayers
+    |> Cmd.map Msgs.OnFetchRespondents
 
-fetchPlayersUrl : String
-fetchPlayersUrl =
-  "http://localhost:4000/players"
+fetchRespondentsUrl : String
+fetchRespondentsUrl =
+  "http://localhost:4000/respondents"
 
-playersDecoder : Decode.Decoder (List Player)
-playersDecoder =
-  Decode.list playerDecoder
+respondentsDecoder : Decode.Decoder (List Respondent)
+respondentsDecoder =
+  Decode.list respondentDecoder
 
-playerDecoder : Decode.Decoder Player
-playerDecoder =
-  decode Player
+respondentDecoder : Decode.Decoder Respondent
+respondentDecoder =
+  decode Respondent
     |> required "id" Decode.string
     |> required "name" Decode.string
     |> required "level" Decode.int
 
-savePlayerUrl : PlayerId -> String
-savePlayerUrl playerId =
-  "http://localhost:4000/players/" ++ playerId
+saveRespondentUrl : RespondentId -> String
+saveRespondentUrl respondentId =
+  "http://localhost:4000/respondents/" ++ respondentId
 
-savePlayerCmd : Player -> Cmd Msg
-savePlayerCmd player =
-  savePlayerRequest player
-    |> Http.send Msgs.OnPlayerSave
+saveRespondentCmd : Respondent -> Cmd Msg
+saveRespondentCmd respondent =
+  saveRespondentRequest respondent
+    |> Http.send Msgs.OnRespondentSave
 
-savePlayerRequest : Player -> Http.Request Player
-savePlayerRequest player =
+saveRespondentRequest : Respondent -> Http.Request Respondent
+saveRespondentRequest respondent =
   Http.request
-    { body = playerEncoder player |> Http.jsonBody
-    , expect = Http.expectJson playerDecoder
+    { body = respondentEncoder respondent |> Http.jsonBody
+    , expect = Http.expectJson respondentDecoder
     , headers = []
     , method = "PATCH"
     , timeout = Nothing
-    , url = savePlayerUrl player.id
+    , url = saveRespondentUrl respondent.id
     , withCredentials = False
     }
 
-playerEncoder : Player -> Encode.Value
-playerEncoder player =
+respondentEncoder : Respondent -> Encode.Value
+respondentEncoder respondent =
   let
       attributes =
-      [ ( "id", Encode.string player.id )
-      , ( "name", Encode.string player.name )
-      , ( "level", Encode.int player.level )
+      [ ( "id", Encode.string respondent.id )
+      , ( "name", Encode.string respondent.name )
+      , ( "level", Encode.int respondent.level )
       ]
   in
       Encode.object attributes

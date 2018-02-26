@@ -1,16 +1,16 @@
 module Update exposing (..)
 
-import Commands exposing (savePlayerCmd)
+import Commands exposing (saveRespondentCmd)
 import Msgs exposing (Msg)
-import Models exposing (Model, Player)
+import Models exposing (Model, Respondent)
 import RemoteData
 import Routing exposing (parseLocation)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
-    Msgs.OnFetchPlayers response ->
-      ( { model | players = response }, Cmd.none )
+    Msgs.OnFetchRespondents response ->
+      ( { model | respondents = response }, Cmd.none )
   
     Msgs.OnLocationChange location ->
       let
@@ -20,33 +20,33 @@ update msg model =
       in
         ( { model | route = newRoute }, Cmd.none )
 
-    Msgs.ChangeLevel player howMuch ->
+    Msgs.ChangeLevel respondent howMuch ->
       let
-          updatedPlayer =
-            { player | level = player.level + howMuch }
+          updatedRespondent =
+            { respondent | level = respondent.level + howMuch }
       in
-          ( model, savePlayerCmd updatedPlayer )
+          ( model, saveRespondentCmd updatedRespondent )
     
-    Msgs.OnPlayerSave (Ok player) ->
-      ( updatePlayer model player, Cmd.none )
+    Msgs.OnRespondentSave (Ok respondent) ->
+      ( updateRespondent model respondent, Cmd.none )
 
-    Msgs.OnPlayerSave (Err err) ->
+    Msgs.OnRespondentSave (Err err) ->
       ( model, Cmd.none )
 
-updatePlayer : Model -> Player -> Model
-updatePlayer model updatedPlayer =
+updateRespondent : Model -> Respondent -> Model
+updateRespondent model updatedRespondent =
   let
-    pick currentPlayer =
-      if updatedPlayer.id == currentPlayer.id then
-        updatedPlayer
+    pick currentRespondent =
+      if updatedRespondent.id == currentRespondent.id then
+        updatedRespondent
       else
-        currentPlayer
+        currentRespondent
     
-    updatePlayerList players =
-      List.map pick players
+    updateRespondentList respondents =
+      List.map pick respondents
 
-    updatedPlayers =
-      RemoteData.map updatePlayerList model.players
+    updatedRespondents =
+      RemoteData.map updateRespondentList model.respondents
 
   in
-    { model | players = updatedPlayers }
+    { model | respondents = updatedRespondents }

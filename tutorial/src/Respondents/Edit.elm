@@ -1,58 +1,58 @@
-module Players.Edit exposing (..)
+module Respondents.Edit exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class, value, href)
 import Html.Events exposing (onClick)
 import Msgs exposing (Msg)
-import Models exposing (Player)
-import Routing exposing (playersPath)
+import Models exposing (Respondent)
+import Routing exposing (respondentsPath)
 
-view : Player -> Html Msg
+view : Respondent -> Html Msg
 view model =
   div []
     [ nav model
     , form model
     ]
 
-nav : Player -> Html Msg
+nav : Respondent -> Html Msg
 nav model =
   div [ class "clearfix mb2 white bg-black p1" ]
       [ listBtn ]
 
-form : Player -> Html Msg
-form player =
+form : Respondent -> Html Msg
+form respondent =
   div [ class "m3" ]
-      [ h1 [] [ text player.name ]
-      , formLevel player
+      [ h1 [] [ text respondent.name ]
+      , formLevel respondent
       ]
 
-formLevel : Player -> Html Msg
-formLevel player =
+formLevel : Respondent -> Html Msg
+formLevel respondent =
   div
       [ class "clearfix py1"
       ]
       [ div [ class "col col-5" ] [ text "level" ]
       , div [ class "col col-7" ]
-            [ span [ class "h2 bold" ] [ text (toString player.level) ]
-            , btnLevelDecrease player
-            , btnLevelIncrease player
+            [ span [ class "h2 bold" ] [ text (toString respondent.level) ]
+            , btnLevelDecrease respondent
+            , btnLevelIncrease respondent
             ]
       ]
 
-btnLevelDecrease : Player -> Html Msg
-btnLevelDecrease player =
+btnLevelDecrease : Respondent -> Html Msg
+btnLevelDecrease respondent =
   let
     message =
-      Msgs.ChangeLevel player -1
+      Msgs.ChangeLevel respondent -1
   in
       a [ class "btn ml1 h1", onClick message ]
         [ i [ class "fa fa-minus-circle" ] [] ]
 
-btnLevelIncrease : Player -> Html Msg
-btnLevelIncrease player =
+btnLevelIncrease : Respondent -> Html Msg
+btnLevelIncrease respondent =
   let
     message =
-      Msgs.ChangeLevel player 1
+      Msgs.ChangeLevel respondent 1
   in
       a [ class "btn ml1 h1", onClick message ]
       [ i [ class "fa fa-plus-circle" ] [] ]
@@ -61,6 +61,6 @@ listBtn : Html Msg
 listBtn =
   a
     [ class "btn regular"
-    , href playersPath
+    , href respondentsPath
     ]
     [ i [ class "fa fa-chevron-left mr1" ] [], text "List" ]

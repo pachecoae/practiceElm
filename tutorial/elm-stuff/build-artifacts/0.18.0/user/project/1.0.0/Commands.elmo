@@ -1,24 +1,24 @@
-var _user$project$Commands$playerEncoder = function (player) {
+var _user$project$Commands$respondentEncoder = function (respondent) {
 	var attributes = {
 		ctor: '::',
 		_0: {
 			ctor: '_Tuple2',
 			_0: 'id',
-			_1: _elm_lang$core$Json_Encode$string(player.id)
+			_1: _elm_lang$core$Json_Encode$string(respondent.id)
 		},
 		_1: {
 			ctor: '::',
 			_0: {
 				ctor: '_Tuple2',
 				_0: 'name',
-				_1: _elm_lang$core$Json_Encode$string(player.name)
+				_1: _elm_lang$core$Json_Encode$string(respondent.name)
 			},
 			_1: {
 				ctor: '::',
 				_0: {
 					ctor: '_Tuple2',
 					_0: 'level',
-					_1: _elm_lang$core$Json_Encode$int(player.level)
+					_1: _elm_lang$core$Json_Encode$int(respondent.level)
 				},
 				_1: {ctor: '[]'}
 			}
@@ -26,10 +26,10 @@ var _user$project$Commands$playerEncoder = function (player) {
 	};
 	return _elm_lang$core$Json_Encode$object(attributes);
 };
-var _user$project$Commands$savePlayerUrl = function (playerId) {
-	return A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000/players/', playerId);
+var _user$project$Commands$saveRespondentUrl = function (respondentId) {
+	return A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000/respondents/', respondentId);
 };
-var _user$project$Commands$playerDecoder = A3(
+var _user$project$Commands$respondentDecoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'level',
 	_elm_lang$core$Json_Decode$int,
@@ -41,30 +41,30 @@ var _user$project$Commands$playerDecoder = A3(
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 			'id',
 			_elm_lang$core$Json_Decode$string,
-			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Models$Player))));
-var _user$project$Commands$savePlayerRequest = function (player) {
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Models$Respondent))));
+var _user$project$Commands$saveRespondentRequest = function (respondent) {
 	return _elm_lang$http$Http$request(
 		{
 			body: _elm_lang$http$Http$jsonBody(
-				_user$project$Commands$playerEncoder(player)),
-			expect: _elm_lang$http$Http$expectJson(_user$project$Commands$playerDecoder),
+				_user$project$Commands$respondentEncoder(respondent)),
+			expect: _elm_lang$http$Http$expectJson(_user$project$Commands$respondentDecoder),
 			headers: {ctor: '[]'},
 			method: 'PATCH',
 			timeout: _elm_lang$core$Maybe$Nothing,
-			url: _user$project$Commands$savePlayerUrl(player.id),
+			url: _user$project$Commands$saveRespondentUrl(respondent.id),
 			withCredentials: false
 		});
 };
-var _user$project$Commands$savePlayerCmd = function (player) {
+var _user$project$Commands$saveRespondentCmd = function (respondent) {
 	return A2(
 		_elm_lang$http$Http$send,
-		_user$project$Msgs$OnPlayerSave,
-		_user$project$Commands$savePlayerRequest(player));
+		_user$project$Msgs$OnRespondentSave,
+		_user$project$Commands$saveRespondentRequest(respondent));
 };
-var _user$project$Commands$playersDecoder = _elm_lang$core$Json_Decode$list(_user$project$Commands$playerDecoder);
-var _user$project$Commands$fetchPlayersUrl = 'http://localhost:4000/players';
-var _user$project$Commands$fetchPlayers = A2(
+var _user$project$Commands$respondentsDecoder = _elm_lang$core$Json_Decode$list(_user$project$Commands$respondentDecoder);
+var _user$project$Commands$fetchRespondentsUrl = 'http://localhost:4000/respondents';
+var _user$project$Commands$fetchRespondents = A2(
 	_elm_lang$core$Platform_Cmd$map,
-	_user$project$Msgs$OnFetchPlayers,
+	_user$project$Msgs$OnFetchRespondents,
 	_krisajenkins$remotedata$RemoteData$sendRequest(
-		A2(_elm_lang$http$Http$get, _user$project$Commands$fetchPlayersUrl, _user$project$Commands$playersDecoder)));
+		A2(_elm_lang$http$Http$get, _user$project$Commands$fetchRespondentsUrl, _user$project$Commands$respondentsDecoder)));

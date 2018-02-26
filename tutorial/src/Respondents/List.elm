@@ -1,20 +1,20 @@
-module Players.List exposing (..)
+module Respondents.List exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (class, href)
 import Msgs exposing (Msg)
-import Models exposing (Player)
+import Models exposing (Respondent)
 import RemoteData exposing (WebData)
-import Routing exposing (playerPath)
+import Routing exposing (respondentPath)
 
-view : WebData (List Player) -> Html Msg
+view : WebData (List Respondent) -> Html Msg
 view response =
     div []
         [ nav
         , maybeList response
         ]
 
-maybeList : WebData (List Player) -> Html Msg
+maybeList : WebData (List Respondent) -> Html Msg
 maybeList response =
   case response of
     RemoteData.NotAsked ->
@@ -23,8 +23,8 @@ maybeList response =
     RemoteData.Loading ->
       text "Loading..."
 
-    RemoteData.Success players ->
-      list players
+    RemoteData.Success respondents ->
+      list respondents
 
     RemoteData.Failure error ->
       text (toString error)
@@ -32,10 +32,10 @@ maybeList response =
 nav : Html Msg
 nav =
     div [ class "clearfix mb2 white bg-black" ]
-        [ div [ class "left p2" ] [ text "Players" ] ]
+        [ div [ class "left p2" ] [ text "Respondents" ] ]
 
-list : List Player -> Html Msg
-list players =
+list : List Respondent -> Html Msg
+list respondents =
     div [ class "p2" ]
         [ table []
             [ thead []
@@ -46,25 +46,25 @@ list players =
                     , th [] [ text "Actions" ]
                     ]
                 ]
-            , tbody [] (List.map playerRow players)
+            , tbody [] (List.map respondentRow respondents)
             ]
         ]
 
-playerRow : Player -> Html Msg
-playerRow player =
+respondentRow : Respondent -> Html Msg
+respondentRow respondent =
     tr []
-        [ td [] [ text player.id ]
-        , td [] [ text player.name ]
-        , td [] [ text (toString player.level) ]
+        [ td [] [ text respondent.id ]
+        , td [] [ text respondent.name ]
+        , td [] [ text (toString respondent.level) ]
         , td []
-            [ editBtn player ]
+            [ editBtn respondent ]
         ]
 
-editBtn : Player -> Html.Html Msg
-editBtn player =
+editBtn : Respondent -> Html.Html Msg
+editBtn respondent =
   let
       path =
-        playerPath player.id
+        respondentPath respondent.id
 
   in
     a

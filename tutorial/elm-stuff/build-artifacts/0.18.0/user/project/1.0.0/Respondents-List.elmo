@@ -1,4 +1,4 @@
-var _user$project$Players_List$editBtn = function (respondent) {
+var _user$project$Respondents_List$editBtn = function (respondent) {
 	var path = _user$project$Routing$respondentPath(respondent.id);
 	return A2(
 		_elm_lang$html$Html$a,
@@ -28,7 +28,7 @@ var _user$project$Players_List$editBtn = function (respondent) {
 			}
 		});
 };
-var _user$project$Players_List$respondentRow = function (respondent) {
+var _user$project$Respondents_List$respondentRow = function (respondent) {
 	return A2(
 		_elm_lang$html$Html$tr,
 		{ctor: '[]'},
@@ -70,7 +70,7 @@ var _user$project$Players_List$respondentRow = function (respondent) {
 							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _user$project$Players_List$editBtn(respondent),
+								_0: _user$project$Respondents_List$editBtn(respondent),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -79,7 +79,7 @@ var _user$project$Players_List$respondentRow = function (respondent) {
 			}
 		});
 };
-var _user$project$Players_List$list = function (respondents) {
+var _user$project$Respondents_List$list = function (respondents) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -154,14 +154,14 @@ var _user$project$Players_List$list = function (respondents) {
 						_0: A2(
 							_elm_lang$html$Html$tbody,
 							{ctor: '[]'},
-							A2(_elm_lang$core$List$map, _user$project$Players_List$respondentRow, respondents)),
+							A2(_elm_lang$core$List$map, _user$project$Respondents_List$respondentRow, respondents)),
 						_1: {ctor: '[]'}
 					}
 				}),
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Players_List$nav = A2(
+var _user$project$Respondents_List$nav = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
@@ -179,12 +179,12 @@ var _user$project$Players_List$nav = A2(
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('Players'),
+				_0: _elm_lang$html$Html$text('Respondents'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {ctor: '[]'}
 	});
-var _user$project$Players_List$maybeList = function (response) {
+var _user$project$Respondents_List$maybeList = function (response) {
 	var _p0 = response;
 	switch (_p0.ctor) {
 		case 'NotAsked':
@@ -192,22 +192,22 @@ var _user$project$Players_List$maybeList = function (response) {
 		case 'Loading':
 			return _elm_lang$html$Html$text('Loading...');
 		case 'Success':
-			return _user$project$Players_List$list(_p0._0);
+			return _user$project$Respondents_List$list(_p0._0);
 		default:
 			return _elm_lang$html$Html$text(
 				_elm_lang$core$Basics$toString(_p0._0));
 	}
 };
-var _user$project$Players_List$view = function (response) {
+var _user$project$Respondents_List$view = function (response) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _user$project$Players_List$nav,
+			_0: _user$project$Respondents_List$nav,
 			_1: {
 				ctor: '::',
-				_0: _user$project$Players_List$maybeList(response),
+				_0: _user$project$Respondents_List$maybeList(response),
 				_1: {ctor: '[]'}
 			}
 		});

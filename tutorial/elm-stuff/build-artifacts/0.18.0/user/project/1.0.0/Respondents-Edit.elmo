@@ -1,4 +1,4 @@
-var _user$project$Players_Edit$listBtn = A2(
+var _user$project$Respondents_Edit$listBtn = A2(
 	_elm_lang$html$Html$a,
 	{
 		ctor: '::',
@@ -25,7 +25,7 @@ var _user$project$Players_Edit$listBtn = A2(
 			_1: {ctor: '[]'}
 		}
 	});
-var _user$project$Players_Edit$btnLevelIncrease = function (respondent) {
+var _user$project$Respondents_Edit$btnLevelIncrease = function (respondent) {
 	var message = A2(_user$project$Msgs$ChangeLevel, respondent, 1);
 	return A2(
 		_elm_lang$html$Html$a,
@@ -51,7 +51,7 @@ var _user$project$Players_Edit$btnLevelIncrease = function (respondent) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Players_Edit$btnLevelDecrease = function (respondent) {
+var _user$project$Respondents_Edit$btnLevelDecrease = function (respondent) {
 	var message = A2(_user$project$Msgs$ChangeLevel, respondent, -1);
 	return A2(
 		_elm_lang$html$Html$a,
@@ -77,7 +77,7 @@ var _user$project$Players_Edit$btnLevelDecrease = function (respondent) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Players_Edit$formLevel = function (respondent) {
+var _user$project$Respondents_Edit$formLevel = function (respondent) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -125,10 +125,10 @@ var _user$project$Players_Edit$formLevel = function (respondent) {
 							}),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Players_Edit$btnLevelDecrease(respondent),
+							_0: _user$project$Respondents_Edit$btnLevelDecrease(respondent),
 							_1: {
 								ctor: '::',
-								_0: _user$project$Players_Edit$btnLevelIncrease(respondent),
+								_0: _user$project$Respondents_Edit$btnLevelIncrease(respondent),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -137,7 +137,7 @@ var _user$project$Players_Edit$formLevel = function (respondent) {
 			}
 		});
 };
-var _user$project$Players_Edit$form = function (respondent) {
+var _user$project$Respondents_Edit$form = function (respondent) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -157,12 +157,12 @@ var _user$project$Players_Edit$form = function (respondent) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Players_Edit$formLevel(respondent),
+				_0: _user$project$Respondents_Edit$formLevel(respondent),
 				_1: {ctor: '[]'}
 			}
 		});
 };
-var _user$project$Players_Edit$nav = function (model) {
+var _user$project$Respondents_Edit$nav = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -172,20 +172,20 @@ var _user$project$Players_Edit$nav = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _user$project$Players_Edit$listBtn,
+			_0: _user$project$Respondents_Edit$listBtn,
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Players_Edit$view = function (model) {
+var _user$project$Respondents_Edit$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _user$project$Players_Edit$nav(model),
+			_0: _user$project$Respondents_Edit$nav(model),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Players_Edit$form(model),
+				_0: _user$project$Respondents_Edit$form(model),
 				_1: {ctor: '[]'}
 			}
 		});
