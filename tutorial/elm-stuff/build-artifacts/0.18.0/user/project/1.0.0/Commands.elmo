@@ -4,7 +4,7 @@ var _user$project$Commands$respondentEncoder = function (respondent) {
 		_0: {
 			ctor: '_Tuple2',
 			_0: 'id',
-			_1: _elm_lang$core$Json_Encode$string(respondent.id)
+			_1: _elm_lang$core$Json_Encode$int(respondent.id)
 		},
 		_1: {
 			ctor: '::',
@@ -17,8 +17,8 @@ var _user$project$Commands$respondentEncoder = function (respondent) {
 				ctor: '::',
 				_0: {
 					ctor: '_Tuple2',
-					_0: 'level',
-					_1: _elm_lang$core$Json_Encode$int(respondent.level)
+					_0: 'age',
+					_1: _elm_lang$core$Json_Encode$int(respondent.age)
 				},
 				_1: {ctor: '[]'}
 			}
@@ -27,11 +27,14 @@ var _user$project$Commands$respondentEncoder = function (respondent) {
 	return _elm_lang$core$Json_Encode$object(attributes);
 };
 var _user$project$Commands$saveRespondentUrl = function (respondentId) {
-	return A2(_elm_lang$core$Basics_ops['++'], 'http://localhost:4000/respondents/', respondentId);
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		'http://localhost:4000/respondents/',
+		_elm_lang$core$Basics$toString(respondentId));
 };
 var _user$project$Commands$respondentDecoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
-	'level',
+	'age',
 	_elm_lang$core$Json_Decode$int,
 	A3(
 		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
@@ -40,7 +43,7 @@ var _user$project$Commands$respondentDecoder = A3(
 		A3(
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 			'id',
-			_elm_lang$core$Json_Decode$string,
+			_elm_lang$core$Json_Decode$int,
 			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Models$Respondent))));
 var _user$project$Commands$saveRespondentRequest = function (respondent) {
 	return _elm_lang$http$Http$request(

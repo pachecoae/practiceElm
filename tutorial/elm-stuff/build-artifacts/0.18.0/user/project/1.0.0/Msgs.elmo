@@ -1,9 +1,9 @@
 var _user$project$Msgs$OnRespondentSave = function (a) {
 	return {ctor: 'OnRespondentSave', _0: a};
 };
-var _user$project$Msgs$ChangeLevel = F2(
+var _user$project$Msgs$ChangeAge = F2(
 	function (a, b) {
-		return {ctor: 'ChangeLevel', _0: a, _1: b};
+		return {ctor: 'ChangeAge', _0: a, _1: b};
 	});
 var _user$project$Msgs$OnLocationChange = function (a) {
 	return {ctor: 'OnLocationChange', _0: a};

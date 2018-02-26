@@ -42,7 +42,7 @@ list respondents =
                 [ tr []
                     [ th [] [ text "Id" ]
                     , th [] [ text "Name" ]
-                    , th [] [ text "Level" ]
+                    , th [] [ text "Age" ]
                     , th [] [ text "Actions" ]
                     ]
                 ]
@@ -53,9 +53,9 @@ list respondents =
 respondentRow : Respondent -> Html Msg
 respondentRow respondent =
     tr []
-        [ td [] [ text respondent.id ]
+        [ td [] [ text (toString respondent.id) ]
         , td [] [ text respondent.name ]
-        , td [] [ text (toString respondent.level) ]
+        , td [] [ text (toString respondent.age) ]
         , td []
             [ editBtn respondent ]
         ]

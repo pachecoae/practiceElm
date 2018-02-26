@@ -39,7 +39,8 @@ var _user$project$Respondents_List$respondentRow = function (respondent) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(respondent.id),
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(respondent.id)),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -60,7 +61,7 @@ var _user$project$Respondents_List$respondentRow = function (respondent) {
 						{
 							ctor: '::',
 							_0: _elm_lang$html$Html$text(
-								_elm_lang$core$Basics$toString(respondent.level)),
+								_elm_lang$core$Basics$toString(respondent.age)),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -129,7 +130,7 @@ var _user$project$Respondents_List$list = function (respondents) {
 												{ctor: '[]'},
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html$text('Level'),
+													_0: _elm_lang$html$Html$text('Age'),
 													_1: {ctor: '[]'}
 												}),
 											_1: {

@@ -8,5 +8,5 @@ import RemoteData exposing (WebData)
 type Msg
   = OnFetchRespondents (WebData (List Respondent))
   | OnLocationChange Location
-  | ChangeLevel Respondent Int
+  | ChangeAge Respondent Int
   | OnRespondentSave (Result Http.Error Respondent)

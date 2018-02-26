@@ -7,7 +7,7 @@ var _user$project$Models$Model = F2(
 	});
 var _user$project$Models$Respondent = F3(
 	function (a, b, c) {
-		return {id: a, name: b, level: c};
+		return {id: a, name: b, age: c};
 	});
 var _user$project$Models$NotFoundRoute = {ctor: 'NotFoundRoute'};
 var _user$project$Models$RespondentRoute = function (a) {

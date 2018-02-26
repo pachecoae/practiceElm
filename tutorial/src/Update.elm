@@ -20,10 +20,10 @@ update msg model =
       in
         ( { model | route = newRoute }, Cmd.none )
 
-    Msgs.ChangeLevel respondent howMuch ->
+    Msgs.ChangeAge respondent howMuch ->
       let
           updatedRespondent =
-            { respondent | level = respondent.level + howMuch }
+            { respondent | age = respondent.age + howMuch }
       in
           ( model, saveRespondentCmd updatedRespondent )
     

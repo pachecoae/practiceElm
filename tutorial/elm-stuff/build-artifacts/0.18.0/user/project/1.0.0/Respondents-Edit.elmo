@@ -25,8 +25,8 @@ var _user$project$Respondents_Edit$listBtn = A2(
 			_1: {ctor: '[]'}
 		}
 	});
-var _user$project$Respondents_Edit$btnLevelIncrease = function (respondent) {
-	var message = A2(_user$project$Msgs$ChangeLevel, respondent, 1);
+var _user$project$Respondents_Edit$btnAgeIncrease = function (respondent) {
+	var message = A2(_user$project$Msgs$ChangeAge, respondent, 1);
 	return A2(
 		_elm_lang$html$Html$a,
 		{
@@ -51,8 +51,8 @@ var _user$project$Respondents_Edit$btnLevelIncrease = function (respondent) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Respondents_Edit$btnLevelDecrease = function (respondent) {
-	var message = A2(_user$project$Msgs$ChangeLevel, respondent, -1);
+var _user$project$Respondents_Edit$btnAgeDecrease = function (respondent) {
+	var message = A2(_user$project$Msgs$ChangeAge, respondent, -1);
 	return A2(
 		_elm_lang$html$Html$a,
 		{
@@ -77,7 +77,7 @@ var _user$project$Respondents_Edit$btnLevelDecrease = function (respondent) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Respondents_Edit$formLevel = function (respondent) {
+var _user$project$Respondents_Edit$formAge = function (respondent) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -96,7 +96,7 @@ var _user$project$Respondents_Edit$formLevel = function (respondent) {
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('level'),
+					_0: _elm_lang$html$Html$text('Age'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -120,15 +120,15 @@ var _user$project$Respondents_Edit$formLevel = function (respondent) {
 							{
 								ctor: '::',
 								_0: _elm_lang$html$Html$text(
-									_elm_lang$core$Basics$toString(respondent.level)),
+									_elm_lang$core$Basics$toString(respondent.age)),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Respondents_Edit$btnLevelDecrease(respondent),
+							_0: _user$project$Respondents_Edit$btnAgeDecrease(respondent),
 							_1: {
 								ctor: '::',
-								_0: _user$project$Respondents_Edit$btnLevelIncrease(respondent),
+								_0: _user$project$Respondents_Edit$btnAgeIncrease(respondent),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -157,7 +157,7 @@ var _user$project$Respondents_Edit$form = function (respondent) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Respondents_Edit$formLevel(respondent),
+				_0: _user$project$Respondents_Edit$formAge(respondent),
 				_1: {ctor: '[]'}
 			}
 		});

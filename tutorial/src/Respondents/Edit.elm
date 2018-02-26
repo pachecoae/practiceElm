@@ -23,36 +23,36 @@ form : Respondent -> Html Msg
 form respondent =
   div [ class "m3" ]
       [ h1 [] [ text respondent.name ]
-      , formLevel respondent
+      , formAge respondent
       ]
 
-formLevel : Respondent -> Html Msg
-formLevel respondent =
+formAge : Respondent -> Html Msg
+formAge respondent =
   div
       [ class "clearfix py1"
       ]
-      [ div [ class "col col-5" ] [ text "level" ]
+      [ div [ class "col col-5" ] [ text "Age" ]
       , div [ class "col col-7" ]
-            [ span [ class "h2 bold" ] [ text (toString respondent.level) ]
-            , btnLevelDecrease respondent
-            , btnLevelIncrease respondent
+            [ span [ class "h2 bold" ] [ text (toString respondent.age) ]
+            , btnAgeDecrease respondent
+            , btnAgeIncrease respondent
             ]
       ]
 
-btnLevelDecrease : Respondent -> Html Msg
-btnLevelDecrease respondent =
+btnAgeDecrease : Respondent -> Html Msg
+btnAgeDecrease respondent =
   let
     message =
-      Msgs.ChangeLevel respondent -1
+      Msgs.ChangeAge respondent -1
   in
       a [ class "btn ml1 h1", onClick message ]
         [ i [ class "fa fa-minus-circle" ] [] ]
 
-btnLevelIncrease : Respondent -> Html Msg
-btnLevelIncrease respondent =
+btnAgeIncrease : Respondent -> Html Msg
+btnAgeIncrease respondent =
   let
     message =
-      Msgs.ChangeLevel respondent 1
+      Msgs.ChangeAge respondent 1
   in
       a [ class "btn ml1 h1", onClick message ]
       [ i [ class "fa fa-plus-circle" ] [] ]

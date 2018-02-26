@@ -14,12 +14,12 @@ initialModel route =
   }
 
 type alias RespondentId =
-  String
+  Int
 
 type alias Respondent =
   { id : RespondentId
   , name : String
-  , level : Int
+  , age : Int
   }
 
 type Route

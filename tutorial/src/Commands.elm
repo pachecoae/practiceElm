@@ -25,13 +25,13 @@ respondentsDecoder =
 respondentDecoder : Decode.Decoder Respondent
 respondentDecoder =
   decode Respondent
-    |> required "id" Decode.string
+    |> required "id" Decode.int
     |> required "name" Decode.string
-    |> required "level" Decode.int
+    |> required "age" Decode.int
 
 saveRespondentUrl : RespondentId -> String
 saveRespondentUrl respondentId =
-  "http://localhost:4000/respondents/" ++ respondentId
+  "http://localhost:4000/respondents/" ++ (toString respondentId)
 
 saveRespondentCmd : Respondent -> Cmd Msg
 saveRespondentCmd respondent =
@@ -54,9 +54,9 @@ respondentEncoder : Respondent -> Encode.Value
 respondentEncoder respondent =
   let
       attributes =
-      [ ( "id", Encode.string respondent.id )
+      [ ( "id", Encode.int respondent.id )
       , ( "name", Encode.string respondent.name )
-      , ( "level", Encode.int respondent.level )
+      , ( "age", Encode.int respondent.age )
       ]
   in
       Encode.object attributes

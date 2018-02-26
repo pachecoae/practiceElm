@@ -8,7 +8,7 @@ matchers : Parser (Route -> a) a
 matchers =
   oneOf
     [ map RespondentsRoute top 
-    , map RespondentRoute (s "respondents" </> string)
+    , map RespondentRoute (s "respondents" </> int)
     , map RespondentsRoute (s "respondents")
     ]
 
@@ -27,4 +27,4 @@ respondentsPath =
 
 respondentPath : RespondentId -> String
 respondentPath id =
-  "#respondents/" ++ id
+  "#respondents/" ++ (toString id)
