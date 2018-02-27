@@ -1288,14 +1288,14 @@ elm-webpack-loader@^4.4.0:
   version "4.4.0"
   resolved "http://npm.gutcheckit.com:4873/elm-webpack-loader/-/elm-webpack-loader-4.4.0.tgz#dd7a3b628b7abc4fac38e3045d3ab6e57187e9b6"
   dependencies:
-    elm "^0.18.0"
+    elm "^0.17.1"
     glob "^7.1.1"
     loader-utils "^1.0.2"
     node-elm-compiler "^4.2.1"
     yargs "^6.5.0"
 
-elm@^0.18.0:
-  version "0.18.0"
+elm@^0.17.1:
+  version "0.17.1"
   resolved "http://npm.gutcheckit.com:4873/elm/-/elm-0.18.0.tgz#919b8309cd939dfe2ff9d252d961b6c89509b970"
   dependencies:
     mkdirp "0.5.1"

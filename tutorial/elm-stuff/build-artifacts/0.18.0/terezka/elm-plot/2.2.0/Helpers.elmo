@@ -1,0 +1,184 @@
+var _terezka$elm_plot$Helpers$getTickDelta = F2(
+	function (range, totalTicks) {
+		var delta0 = range / _elm_lang$core$Basics$toFloat(totalTicks);
+		var mag = _elm_lang$core$Basics$floor(
+			A2(_elm_lang$core$Basics$logBase, 10, delta0));
+		var magPow = _elm_lang$core$Basics$toFloat(
+			Math.pow(10, mag));
+		var magMsd = _elm_lang$core$Basics$round(delta0 / magPow);
+		var magMsdFinal = (_elm_lang$core$Native_Utils.cmp(magMsd, 5) > 0) ? 10 : ((_elm_lang$core$Native_Utils.cmp(magMsd, 2) > 0) ? 5 : ((_elm_lang$core$Native_Utils.cmp(magMsd, 1) > 0) ? 1 : magMsd));
+		return _elm_lang$core$Basics$toFloat(magMsdFinal) * magPow;
+	});
+var _terezka$elm_plot$Helpers$toStyle = function (styles) {
+	return A3(
+		_elm_lang$core$List$foldr,
+		F2(
+			function (_p0, r) {
+				var _p1 = _p0;
+				return A2(
+					_elm_lang$core$Basics_ops['++'],
+					r,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_p1._0,
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							':',
+							A2(_elm_lang$core$Basics_ops['++'], _p1._1, '; '))));
+			}),
+		'',
+		styles);
+};
+var _terezka$elm_plot$Helpers$toRotate = F3(
+	function (d, x, y) {
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			'rotate(',
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Basics$toString(d),
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					' ',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						_elm_lang$core$Basics$toString(x),
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							' ',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								_elm_lang$core$Basics$toString(y),
+								')'))))));
+	});
+var _terezka$elm_plot$Helpers$toTranslate = function (_p2) {
+	var _p3 = _p2;
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		'translate(',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Basics$toString(_p3._0),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				',',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(_p3._1),
+					')'))));
+};
+var _terezka$elm_plot$Helpers$toPositionAttr = F4(
+	function (x1, y1, x2, y2) {
+		return {
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$x1(
+				_elm_lang$core$Basics$toString(x1)),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$y1(
+					_elm_lang$core$Basics$toString(y1)),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$x2(
+						_elm_lang$core$Basics$toString(x2)),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$y2(
+							_elm_lang$core$Basics$toString(y2)),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		};
+	});
+var _terezka$elm_plot$Helpers$toInstruction = F2(
+	function (instructionType, coords) {
+		var coordsString = A2(
+			_elm_lang$core$String$join,
+			',',
+			A2(_elm_lang$core$List$map, _elm_lang$core$Basics$toString, coords));
+		return A2(
+			_elm_lang$core$Basics_ops['++'],
+			instructionType,
+			A2(_elm_lang$core$Basics_ops['++'], ' ', coordsString));
+	});
+var _terezka$elm_plot$Helpers$startPath = function (data) {
+	var tail = A2(
+		_elm_lang$core$Maybe$withDefault,
+		{ctor: '[]'},
+		_elm_lang$core$List$tail(data));
+	var _p4 = A2(
+		_elm_lang$core$Maybe$withDefault,
+		{ctor: '_Tuple2', _0: 0, _1: 0},
+		_elm_lang$core$List$head(data));
+	var x = _p4._0;
+	var y = _p4._1;
+	return {
+		ctor: '_Tuple2',
+		_0: A2(
+			_terezka$elm_plot$Helpers$toInstruction,
+			'M',
+			{
+				ctor: '::',
+				_0: x,
+				_1: {
+					ctor: '::',
+					_0: y,
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: tail
+	};
+};
+var _terezka$elm_plot$Helpers$coordToInstruction = F2(
+	function (instructionType, coords) {
+		return A2(
+			_elm_lang$core$String$join,
+			'',
+			A2(
+				_elm_lang$core$List$map,
+				function (_p5) {
+					var _p6 = _p5;
+					return A2(
+						_terezka$elm_plot$Helpers$toInstruction,
+						instructionType,
+						{
+							ctor: '::',
+							_0: _p6._0,
+							_1: {
+								ctor: '::',
+								_0: _p6._1,
+								_1: {ctor: '[]'}
+							}
+						});
+				},
+				coords));
+	});
+var _terezka$elm_plot$Helpers$ceilToNearest = F2(
+	function (precision, value) {
+		return _elm_lang$core$Basics$toFloat(
+			_elm_lang$core$Basics$ceiling(value / precision)) * precision;
+	});
+var _terezka$elm_plot$Helpers$pixelsToValue = F3(
+	function (length, range, pixels) {
+		return (range * _elm_lang$core$Basics$toFloat(pixels)) / _elm_lang$core$Basics$toFloat(length);
+	});
+var _terezka$elm_plot$Helpers$getRange = F2(
+	function (lowest, highest) {
+		return _elm_lang$core$Basics$abs(lowest) + _elm_lang$core$Basics$abs(highest);
+	});
+var _terezka$elm_plot$Helpers$getLowest = function (values) {
+	return A2(
+		_elm_lang$core$Basics$min,
+		0,
+		A2(
+			_elm_lang$core$Maybe$withDefault,
+			0,
+			_elm_lang$core$List$minimum(values)));
+};
+var _terezka$elm_plot$Helpers$getHighest = function (values) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		10,
+		_elm_lang$core$List$maximum(values));
+};
