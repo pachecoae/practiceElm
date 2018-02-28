@@ -40,6 +40,8 @@ var _user$project$View$page = function (model) {
 			return _user$project$Respondents_List$view(model.respondents);
 		case 'RespondentRoute':
 			return A2(_user$project$View$respondentEditPage, model, _p2._0);
+		case 'GraphRoute':
+			return _user$project$Graphs_Graph$view(model.respondents);
 		default:
 			return _user$project$View$notFoundView;
 	}

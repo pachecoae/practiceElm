@@ -66,6 +66,11 @@ var _user$project$Commands$saveRespondentCmd = function (respondent) {
 };
 var _user$project$Commands$respondentsDecoder = _elm_lang$core$Json_Decode$list(_user$project$Commands$respondentDecoder);
 var _user$project$Commands$fetchRespondentsUrl = 'http://localhost:4000/respondents';
+var _user$project$Commands$fetchRespondentGraph = A2(
+	_elm_lang$core$Platform_Cmd$map,
+	_user$project$Msgs$OnFetchRespondentGraph,
+	_krisajenkins$remotedata$RemoteData$sendRequest(
+		A2(_elm_lang$http$Http$get, _user$project$Commands$fetchRespondentsUrl, _user$project$Commands$respondentsDecoder)));
 var _user$project$Commands$fetchRespondents = A2(
 	_elm_lang$core$Platform_Cmd$map,
 	_user$project$Msgs$OnFetchRespondents,

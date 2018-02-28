@@ -1,5 +1,6 @@
 module View exposing (..)
 
+import Graphs.Graph exposing (..)
 import Html exposing (Html, div, text)
 import Models exposing (Model, RespondentId)
 import Msgs exposing (Msg)
@@ -20,6 +21,9 @@ page model =
 
     Models.RespondentRoute id ->
       respondentEditPage model id
+
+    Models.GraphRoute ->
+      Graphs.Graph.view model.respondents
 
     Models.NotFoundRoute ->
       notFoundView

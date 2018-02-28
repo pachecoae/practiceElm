@@ -10,3 +10,4 @@ type Msg
   | OnLocationChange Location
   | ChangeAge Respondent Int
   | OnRespondentSave (Result Http.Error Respondent)
+  | OnFetchRespondentGraph (WebData (List Respondent))

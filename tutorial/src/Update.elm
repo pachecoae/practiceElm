@@ -11,6 +11,9 @@ update msg model =
   case msg of
     Msgs.OnFetchRespondents response ->
       ( { model | respondents = response }, Cmd.none )
+
+    Msgs.OnFetchRespondentGraph response ->
+      ( { model | respondents = response }, Cmd.none )
   
     Msgs.OnLocationChange location ->
       let

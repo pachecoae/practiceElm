@@ -22,7 +22,13 @@ type alias Respondent =
   , age : Int
   }
 
+type alias DataPoint =
+  { x : Float
+  , y : Float
+  }
+
 type Route
   = RespondentsRoute
   | RespondentRoute RespondentId
+  | GraphRoute
   | NotFoundRoute

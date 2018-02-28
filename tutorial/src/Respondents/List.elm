@@ -1,11 +1,11 @@
 module Respondents.List exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, href)
+import Html.Attributes exposing (class, href, style)
 import Msgs exposing (Msg)
 import Models exposing (Respondent)
 import RemoteData exposing (WebData)
-import Routing exposing (respondentPath)
+import Routing exposing (respondentPath, graphPath)
 
 view : WebData (List Respondent) -> Html Msg
 view response =
@@ -32,8 +32,10 @@ maybeList response =
 nav : Html Msg
 nav =
     div [ class "clearfix mb2 white bg-black" ]
-        [ div [ class "left p2" ] [ text "Respondents" ] ]
-
+        [ div [ class "left p2" ] [ text "Respondents" ]
+        , graphBtn
+        ]
+ 
 list : List Respondent -> Html Msg
 list respondents =
     div [ class "p2" ]
@@ -72,3 +74,20 @@ editBtn respondent =
       , href path
       ]
       [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
+
+graphBtn : Html.Html Msg
+graphBtn =
+  let
+    path = graphPath
+  in
+    a
+      [ class "btn regular"
+      , href path
+      , style
+        [ ("display", "block")
+        , ("text-align", "right")
+        ]
+      ]
+      [ i [ class "fa fa-bar-chart mr1 white bg-black" ] []
+      , text "View Graph"
+      ]

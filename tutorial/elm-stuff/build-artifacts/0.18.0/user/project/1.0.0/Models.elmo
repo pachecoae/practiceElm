@@ -9,7 +9,12 @@ var _user$project$Models$Respondent = F3(
 	function (a, b, c) {
 		return {id: a, name: b, age: c};
 	});
+var _user$project$Models$DataPoint = F2(
+	function (a, b) {
+		return {x: a, y: b};
+	});
 var _user$project$Models$NotFoundRoute = {ctor: 'NotFoundRoute'};
+var _user$project$Models$GraphRoute = {ctor: 'GraphRoute'};
 var _user$project$Models$RespondentRoute = function (a) {
 	return {ctor: 'RespondentRoute', _0: a};
 };

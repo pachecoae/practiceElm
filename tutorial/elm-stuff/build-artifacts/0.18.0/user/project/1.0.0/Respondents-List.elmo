@@ -1,3 +1,46 @@
+var _user$project$Respondents_List$graphBtn = function () {
+	var path = _user$project$Routing$graphPath;
+	return A2(
+		_elm_lang$html$Html$a,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$class('btn regular'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$href(path),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'display', _1: 'block'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'right'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$i,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('fa fa-bar-chart mr1 white bg-black'),
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('View Graph'),
+				_1: {ctor: '[]'}
+			}
+		});
+}();
 var _user$project$Respondents_List$editBtn = function (respondent) {
 	var path = _user$project$Routing$respondentPath(respondent.id);
 	return A2(
@@ -183,7 +226,11 @@ var _user$project$Respondents_List$nav = A2(
 				_0: _elm_lang$html$Html$text('Respondents'),
 				_1: {ctor: '[]'}
 			}),
-		_1: {ctor: '[]'}
+		_1: {
+			ctor: '::',
+			_0: _user$project$Respondents_List$graphBtn,
+			_1: {ctor: '[]'}
+		}
 	});
 var _user$project$Respondents_List$maybeList = function (response) {
 	var _p0 = response;

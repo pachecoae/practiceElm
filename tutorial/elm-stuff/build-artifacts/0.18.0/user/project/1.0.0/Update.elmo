@@ -23,6 +23,14 @@ var _user$project$Update$update = F2(
 						{respondents: _p0._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
+			case 'OnFetchRespondentGraph':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{respondents: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 			case 'OnLocationChange':
 				var newRoute = _user$project$Routing$parseLocation(_p0._0);
 				return {

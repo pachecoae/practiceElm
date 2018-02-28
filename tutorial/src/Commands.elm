@@ -14,6 +14,12 @@ fetchRespondents =
     |> RemoteData.sendRequest
     |> Cmd.map Msgs.OnFetchRespondents
 
+fetchRespondentGraph : Cmd Msg
+fetchRespondentGraph =
+  Http.get fetchRespondentsUrl respondentsDecoder
+    |> RemoteData.sendRequest
+    |> Cmd.map Msgs.OnFetchRespondentGraph
+
 fetchRespondentsUrl : String
 fetchRespondentsUrl =
   "http://localhost:4000/respondents"

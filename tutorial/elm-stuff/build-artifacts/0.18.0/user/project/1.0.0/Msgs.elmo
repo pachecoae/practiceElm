@@ -1,3 +1,6 @@
+var _user$project$Msgs$OnFetchRespondentGraph = function (a) {
+	return {ctor: 'OnFetchRespondentGraph', _0: a};
+};
 var _user$project$Msgs$OnRespondentSave = function (a) {
 	return {ctor: 'OnRespondentSave', _0: a};
 };

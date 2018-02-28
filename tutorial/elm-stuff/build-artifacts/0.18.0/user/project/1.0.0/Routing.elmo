@@ -1,3 +1,4 @@
+var _user$project$Routing$graphPath = '#graph';
 var _user$project$Routing$respondentPath = function (id) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
@@ -24,7 +25,14 @@ var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 					_evancz$url_parser$UrlParser$map,
 					_user$project$Models$RespondentsRoute,
 					_evancz$url_parser$UrlParser$s('respondents')),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_evancz$url_parser$UrlParser$map,
+						_user$project$Models$GraphRoute,
+						_evancz$url_parser$UrlParser$s('graph')),
+					_1: {ctor: '[]'}
+				}
 			}
 		}
 	});
