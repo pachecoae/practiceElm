@@ -6,50 +6,50 @@ import Models exposing (Model, Respondent)
 import RemoteData
 import Routing exposing (parseLocation)
 
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-  case msg of
-    Msgs.OnFetchRespondents response ->
-      ( { model | respondents = response }, Cmd.none )
+    case msg of
+        Msgs.OnFetchRespondents response ->
+            ( { model | respondents = response }, Cmd.none )
 
-    Msgs.OnFetchRespondentGraph response ->
-      ( { model | respondents = response }, Cmd.none )
-  
-    Msgs.OnLocationChange location ->
-      let
-        newRoute =
-          parseLocation location
+        Msgs.OnFetchRespondentGraph response ->
+            ( { model | respondents = response }, Cmd.none )
 
-      in
-        ( { model | route = newRoute }, Cmd.none )
+        Msgs.OnLocationChange location ->
+            let
+                newRoute =
+                    parseLocation location
+            in
+                ( { model | route = newRoute }, Cmd.none )
 
-    Msgs.ChangeAge respondent howMuch ->
-      let
-          updatedRespondent =
-            { respondent | age = respondent.age + howMuch }
-      in
-          ( model, saveRespondentCmd updatedRespondent )
-    
-    Msgs.OnRespondentSave (Ok respondent) ->
-      ( updateRespondent model respondent, Cmd.none )
+        Msgs.ChangeAge respondent howMuch ->
+            let
+                updatedRespondent =
+                    { respondent | age = respondent.age + howMuch }
+            in
+                ( model, saveRespondentCmd updatedRespondent )
 
-    Msgs.OnRespondentSave (Err err) ->
-      ( model, Cmd.none )
+        Msgs.OnRespondentSave (Ok respondent) ->
+            ( updateRespondent model respondent, Cmd.none )
+
+        Msgs.OnRespondentSave (Err err) ->
+            ( model, Cmd.none )
+
 
 updateRespondent : Model -> Respondent -> Model
 updateRespondent model updatedRespondent =
-  let
-    pick currentRespondent =
-      if updatedRespondent.id == currentRespondent.id then
-        updatedRespondent
-      else
-        currentRespondent
-    
-    updateRespondentList respondents =
-      List.map pick respondents
+    let
+        pick currentRespondent =
+            if updatedRespondent.id == currentRespondent.id then
+                updatedRespondent
+            else
+                currentRespondent
 
-    updatedRespondents =
-      RemoteData.map updateRespondentList model.respondents
+        updateRespondentList respondents =
+            List.map pick respondents
 
-  in
-    { model | respondents = updatedRespondents }
+        updatedRespondents =
+            RemoteData.map updateRespondentList model.respondents
+    in
+        { model | respondents = updatedRespondents }

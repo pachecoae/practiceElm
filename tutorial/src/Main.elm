@@ -8,19 +8,24 @@ import Routing
 import Update exposing (update)
 import View exposing (view)
 
+
 init : Location -> ( Model, Cmd Msg )
 init location =
-  let
-      currentRoute =
-        Routing.parseLocation location
-  in
-      ( initialModel currentRoute, fetchRespondents )
+    let
+        currentRoute =
+            Routing.parseLocation location
+    in
+        ( initialModel currentRoute, fetchRespondents )
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
+
+
 -- MAIN
+
 
 main : Program Never Model Msg
 main =

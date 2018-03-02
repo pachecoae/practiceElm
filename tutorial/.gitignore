@@ -1,4 +1,5 @@
-yarn.lock
-elm-stuff/**
-node_modules/**
-.vscode/**
+**/yarn.lock
+**/elm-stuff/**
+**/node_modules/**
+**/.vscode/**
+**/src backup/**

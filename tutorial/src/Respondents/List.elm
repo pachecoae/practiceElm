@@ -7,6 +7,7 @@ import Models exposing (Respondent)
 import RemoteData exposing (WebData)
 import Routing exposing (respondentPath, graphPath)
 
+
 view : WebData (List Respondent) -> Html Msg
 view response =
     div []
@@ -14,20 +15,22 @@ view response =
         , maybeList response
         ]
 
+
 maybeList : WebData (List Respondent) -> Html Msg
 maybeList response =
-  case response of
-    RemoteData.NotAsked ->
-      text ""
+    case response of
+        RemoteData.NotAsked ->
+            text ""
 
-    RemoteData.Loading ->
-      text "Loading..."
+        RemoteData.Loading ->
+            text "Loading..."
 
-    RemoteData.Success respondents ->
-      list respondents
+        RemoteData.Success respondents ->
+            list respondents
 
-    RemoteData.Failure error ->
-      text (toString error)
+        RemoteData.Failure error ->
+            text (toString error)
+
 
 nav : Html Msg
 nav =
@@ -35,7 +38,8 @@ nav =
         [ div [ class "left p2" ] [ text "Respondents" ]
         , graphBtn
         ]
- 
+
+
 list : List Respondent -> Html Msg
 list respondents =
     div [ class "p2" ]
@@ -52,6 +56,7 @@ list respondents =
             ]
         ]
 
+
 respondentRow : Respondent -> Html Msg
 respondentRow respondent =
     tr []
@@ -62,32 +67,34 @@ respondentRow respondent =
             [ editBtn respondent ]
         ]
 
+
 editBtn : Respondent -> Html.Html Msg
 editBtn respondent =
-  let
-      path =
-        respondentPath respondent.id
+    let
+        path =
+            respondentPath respondent.id
+    in
+        a
+            [ class "btn regular"
+            , href path
+            ]
+            [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
 
-  in
-    a
-      [ class "btn regular"
-      , href path
-      ]
-      [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
 
 graphBtn : Html.Html Msg
 graphBtn =
-  let
-    path = graphPath
-  in
-    a
-      [ class "btn regular"
-      , href path
-      , style
-        [ ("display", "block")
-        , ("text-align", "right")
-        ]
-      ]
-      [ i [ class "fa fa-bar-chart mr1 white bg-black" ] []
-      , text "View Graph"
-      ]
+    let
+        path =
+            graphPath
+    in
+        a
+            [ class "btn regular"
+            , href path
+            , style
+                [ ( "display", "block" )
+                , ( "text-align", "right" )
+                ]
+            ]
+            [ i [ class "fa fa-bar-chart mr1 white bg-black" ] []
+            , text "View Graph"
+            ]
