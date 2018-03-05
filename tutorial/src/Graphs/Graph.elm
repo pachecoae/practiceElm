@@ -3,13 +3,6 @@ module Graphs.Graph exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (class, href)
 import Plot exposing (..)
--- import Plot.area as Area
--- import Plot.axis as Axis
--- import Plot.Grid as Grid
--- import Plot.Hint as Hint
--- import Plot.Label as Label
--- import Plot.Line as Line
--- import Plot.Tick as Tick
 import Models exposing (Respondent, DataPoint)
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
@@ -74,9 +67,6 @@ graph state =
                     , Label.format (\{ value } -> toString value)
                     ]
                 ]
-            , hint
-                [ Hint.lineStyle [ ( "background", "#b9b9b9" ) ] ]
-                (getHoveredValue state)
             ]
         ]
 
@@ -122,17 +112,17 @@ graphData respondents =
             ]
 
 
-ageCountData : List Respondent -> List DataPoint
+ageCountData : List Respondent -> List Models.DataPoint
 ageCountData respondents =
     List.map ageData respondents
 
 
-ageData : Respondent -> DataPoint
+ageData : Respondent -> Models.DataPoint
 ageData respondent =
-    DataPoint (toFloat respondent.id) (toFloat respondent.age)
+    Models.DataPoint (toFloat respondent.id) (toFloat respondent.age)
 
 
-dataRow : DataPoint -> Html Msg
+dataRow : Models.DataPoint -> Html Msg
 dataRow data =
     tr []
         [ td [] [ text (toString data.x) ]
